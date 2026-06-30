@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Login – ScoreIQ{% endblock %}
+
+{% block content %}
+<div class="auth-wrap">
+  <div class="auth-card">
+    <div class="auth-header">
+      <div class="auth-icon">🎓</div>
+      <h1>Welcome back</h1>
+      <p>Log in to predict your exam score</p>
+    </div>
+
+    <form method="POST" action="{{ url_for('login') }}" class="auth-form">
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" required />
+      </div>
+      <button type="submit" class="btn-primary">Log in →</button>
+    </form>
+
+    <p class="auth-switch">Don't have an account? <a href="{{ url_for('signup') }}">Sign up</a></p>
+  </div>
+
+  <div class="auth-visual">
+    <div class="visual-stat"><span class="big-num">92%</span><span class="label">Prediction accuracy</span></div>
+    <div class="visual-stat"><span class="big-num">500+</span><span class="label">Students analysed</span></div>
+    <p class="visual-tagline">"Study smart, predict smarter."</p>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% block title %}Predict – ScoreIQ{% endblock %}
+
+{% block content %}
+<div class="predict-wrap">
+
+  <!-- LEFT: form -->
+  <div class="predict-card">
+    <h2>Score Predictor</h2>
+    <p class="sub">Enter your study habits and see where you'll land.</p>
+
+    <div class="input-group">
+      <label for="hours">Hours studied per day</label>
+      <div class="slider-row">
+        <input type="range" id="hours" min="0" max="12" step="0.5" value="4" />
+        <span class="slider-val" id="hours-val">4 hrs</span>
+      </div>
+    </div>
+
+    <div class="input-group">
+      <label for="attendance">Attendance percentage</label>
+      <div class="slider-row">
+        <input type="range" id="attendance" min="0" max="100" step="1" value="75" />
+        <span class="slider-val" id="att-val">75%</span>
+      </div>
+    </div>
+
+    <button class="btn-primary" id="predict-btn">Predict my score ✦</button>
+    <div class="error-msg" id="err-msg"></div>
+  </div>
+
+  <!-- RIGHT: result -->
+  <div class="result-card" id="result-card">
+    <div class="result-idle" id="result-idle">
+      <div class="idle-icon">🎯</div>
+      <p>Your predicted score will appear here</p>
+    </div>
+
+    <div class="result-data hidden" id="result-data">
+      <div class="score-ring">
+        <svg viewBox="0 0 120 120" class="ring-svg">
+          <circle cx="60" cy="60" r="50" class="ring-bg" />
+          <circle cx="60" cy="60" r="50" class="ring-fill" id="ring-fill" />
+        </svg>
+        <div class="score-center">
+          <span class="score-num" id="score-num">--</span>
+          <span class="score-label">/ 100</span>
+        </div>
+      </div>
+      <div class="grade-badge" id="grade-badge">–</div>
+      <p class="result-msg" id="result-msg"></p>
+      <div class="result-inputs" id="result-inputs"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Tips strip -->
+<section class="tips">
+  <div class="tip-card">📚 <strong>+1 hr/day</strong> of focused study can add ~5 points to your score.</div>
+  <div class="tip-card">📅 <strong>+10% attendance</strong> typically adds ~4 points on average.</div>
+  <div class="tip-card">🧠 Consistent study beats last-minute cramming every time.</div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/predict.js') }}"></script>
+{% endblock %}
